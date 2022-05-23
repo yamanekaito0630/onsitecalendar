@@ -73,8 +73,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/group/{id}/admin/delete_member', 'destroyMember')->name('admin.delete.member');
     });
 
-    // メモの追加処理
-    Route::post('/memo/store', [MemoController::class, 'store'])->name('memo.store');
+    Route::controller(MemoController::class)->group(function() {
+        // メモの追加処理
+        Route::post('/memo/store', 'store')->name('memo.store');
+    });
 });
 
 Route::get('/dashboard', function () {
