@@ -164,7 +164,7 @@ height: 100%;}
     }
 
     .btn {
-        font-size: 2px;
+        font-size: 2em;
     }
 
     .employee-name {
@@ -184,6 +184,6 @@ height: 100%;}
     }
 
     ul{
-        
+
     font-size: 14px;}
 }
