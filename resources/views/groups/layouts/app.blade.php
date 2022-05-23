@@ -41,7 +41,7 @@
     }
 
     @page {
-        size: A4 landscape; //横向き
+        size: A4;
     }
 </style>
 <body>

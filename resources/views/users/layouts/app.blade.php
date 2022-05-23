@@ -41,7 +41,7 @@
     }
 
     @page {
-        size: A4 landscape;R
+        size: A4;
     }
 </style>
 <body>
