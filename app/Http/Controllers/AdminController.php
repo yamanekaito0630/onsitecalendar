@@ -572,7 +572,7 @@ class AdminController extends Controller
             ->first();
 
         if ($count === 1 && $group->watchword !== $request->input('watchword')) {
-            return redirect()->route('admin.my-page', $id)->with('error_message', '処理に失敗しました。');
+            return redirect()->route('admin.my-page', $id)->with('error_message', '同じ合言葉が存在します。');
         }
 
         $group->name = $request->input('name');
