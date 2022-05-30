@@ -7,7 +7,7 @@
 
         <!-- フラッシュメッセージ -->
         @if (session('flash_message'))
-            <div class="flash_message">
+            <div class="flash_message text-success">
                 {{ session('flash_message') }}
             </div>
         @endif
