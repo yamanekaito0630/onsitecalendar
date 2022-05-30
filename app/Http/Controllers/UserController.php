@@ -90,6 +90,7 @@ class UserController extends Controller
      */
     public function store(Request $request): View|RedirectResponse
     {
+        // グループ作成
         if (!empty($request->input('create'))) {
             // 受け取ったデータ
             $group_name = $request->input('group_name');
@@ -121,6 +122,7 @@ class UserController extends Controller
             $group_user->save();
         }
 
+        // グループ参加
         if (!empty($request->input('join'))) {
             $group_user = GroupUser::query()
                 ->where('user_id', Auth::id())
@@ -140,7 +142,7 @@ class UserController extends Controller
             }
         }
 
-        return redirect()->route('my-page');
+        return redirect()->route('my-page')->with('flash_message', 'グループを追加しました。');
     }
 
     /**
