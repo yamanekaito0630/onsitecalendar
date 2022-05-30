@@ -273,14 +273,6 @@ class GroupController extends Controller
             return redirect()->route('my-page');
         }
 
-        // 現場の保存
-        $user_onsite = new UserOnsite();
-        $user_onsite->user_id = Auth::id();
-        $user_onsite->onsite_id = $request->input('onsite-id');
-        $user_onsite->date = $request->input('date');
-        $user_onsite->oneday_flag = true;
-        $user_onsite->save();
-
         // 日付の取得
         $date = $request->input('date');
 
@@ -289,6 +281,16 @@ class GroupController extends Controller
             ->where('user_id', Auth::id())
             ->where('date', 'like', $date)
             ->count();
+
+        if ($count < 2) {
+            // 現場の保存
+            $user_onsite = new UserOnsite();
+            $user_onsite->user_id = Auth::id();
+            $user_onsite->onsite_id = $request->input('onsite-id');
+            $user_onsite->date = $request->input('date');
+            $user_onsite->oneday_flag = true;
+            $user_onsite->save();
+        }
 
         if ($count >= 2) {
             $user_onsite_id = UserOnsite::query()
