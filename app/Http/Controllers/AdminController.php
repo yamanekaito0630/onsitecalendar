@@ -559,6 +559,10 @@ class AdminController extends Controller
             return redirect()->route('my-page');
         }
 
+        if ($request->input('watchword') === '') {
+            return redirect()->route('admin.my-page', $id)->with('error_message', '処理に失敗しました。');
+        }
+
         $count = Group::query()
             ->where('watchword', 'like', $request->input('watchword'))
             ->count();
@@ -567,7 +571,7 @@ class AdminController extends Controller
             ->where('id', $id)
             ->first();
 
-        if ($count === 1 && $group->watchword !== $request->input('watchword') && $request->input('watchword') === '') {
+        if ($count === 1 && $group->watchword !== $request->input('watchword')) {
             return redirect()->route('admin.my-page', $id)->with('error_message', '処理に失敗しました。');
         }
 
