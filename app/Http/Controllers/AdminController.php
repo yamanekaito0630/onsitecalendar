@@ -559,9 +559,17 @@ class AdminController extends Controller
             return redirect()->route('my-page');
         }
 
+        $count = Group::query()
+            ->where('watchword', 'like', $request->input('watchword'))
+            ->count();
+
         $group = Group::query()
             ->where('id', $id)
             ->first();
+
+        if ($count === 1 && $group->watchword !== $request->input('watchword') && $request->input('watchword') === '') {
+            return redirect()->route('admin.my-page', $id)->with('error_message', '処理に失敗しました。');
+        }
 
         $group->name = $request->input('name');
         $group->watchword = $request->input('watchword');
