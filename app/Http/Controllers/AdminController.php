@@ -559,7 +559,7 @@ class AdminController extends Controller
             return redirect()->route('my-page');
         }
 
-        if ($request->input('watchword') === null) {
+        if ($request->input('watchword') === null || $request->input('name') === null) {
             return redirect()->route('admin.my-page', $id)->with('error_message', '処理に失敗しました。');
         }
 
