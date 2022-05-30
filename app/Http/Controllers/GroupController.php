@@ -333,10 +333,21 @@ class GroupController extends Controller
             ->where('date', 'like', $request->input('date'))
             ->first();
 
-        // oneday_flagをtrueにする
-        if ($request->input('flag') == 'one-day') {
-            $user_onsite->oneday_flag = true;
-            $user_onsite->save();
+        // 日付の取得
+        $date = $request->input('date');
+
+        // 現場数の取得
+        $count = UserOnsite::query()
+            ->where('user_id', Auth::id())
+            ->where('date', 'like', $date)
+            ->count();
+
+        if ($count < 2) {
+            // oneday_flagをtrueにする
+            if ($request->input('flag') == 'one-day') {
+                $user_onsite->oneday_flag = true;
+                $user_onsite->save();
+            }
         }
 
         // oneday_flagをfalseにする
