@@ -607,6 +607,10 @@ class AdminController extends Controller
             ->where('group_id', $id)
             ->first();
 
+        if ($group_user->is_admin) {
+            return redirect()->route('admin.my-page', $id)->with('error_message', '既に管理者です。');
+        }
+
         $group_user->is_admin = true;
         $group_user->save();
 
@@ -698,9 +702,18 @@ class AdminController extends Controller
         }
 
         $member_id = $request->input('member-id');
+        $member = GroupUser::query()
+            ->where('user_id', $member_id)
+            ->where('group_id', $id)
+            ->first();
+
+        if ($member->is_admin) {
+            return redirect()->route('admin.my-page', $id)->with('error_message', '管理者は退会できません。');
+        }
+
         GroupUser::query()
-            ->where('user_id', "$member_id")
-            ->where('group_id', "$id")
+            ->where('user_id', $member_id)
+            ->where('group_id', $id)
             ->delete();
 
         dailyAllowance::query()
@@ -714,6 +727,6 @@ class AdminController extends Controller
             ->where('group_id', $id)
             ->delete();
 
-        return redirect()->route('admin.my-page', $id);
+        return redirect()->route('admin.my-page', $id)->with('success_message', '退会させました。');
     }
 }
