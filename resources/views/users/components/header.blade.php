@@ -5,8 +5,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- フラッシュメッセージ -->
         @if (session('flash_message'))
+            <!-- フラッシュメッセージ -->
             <div class="flash_message text-success">
                 {{ session('flash_message') }}
             </div>
