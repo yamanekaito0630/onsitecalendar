@@ -142,7 +142,7 @@ class UserController extends Controller
             }
         }
 
-        return redirect()->route('my-page')->with('flash_message', 'グループを追加しました。');
+        return redirect()->route('edit.group')->with('flash_message', 'グループを追加しました。');
     }
 
     /**
