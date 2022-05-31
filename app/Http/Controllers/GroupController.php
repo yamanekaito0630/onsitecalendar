@@ -317,7 +317,7 @@ class GroupController extends Controller
                 ->update($update);
         }
 
-        return redirect()->route('group.my-page', $id);
+        return redirect()->route('group.my-page', $id)->with('success_message', '追加しました。');
     }
 
     /**
