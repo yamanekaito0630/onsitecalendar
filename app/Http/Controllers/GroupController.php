@@ -275,7 +275,7 @@ class GroupController extends Controller
 
         $onsite = Onsite::query()->find($request->input('onsite-id'));
 
-        if ($onsite->group_id !== $id) {
+        if ($onsite->group_id !== $id || is_null($onsite)) {
             return redirect()->route('group.my-page', $id)->with('error_message', '追加できませんでした。');
         }
 
