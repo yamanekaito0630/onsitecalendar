@@ -273,6 +273,12 @@ class GroupController extends Controller
             return redirect()->route('my-page');
         }
 
+        $onsite = Onsite::query()->find($request->input('onsite-id'));
+
+        if ($onsite->group_id !== $id) {
+            return redirect()->route('group.my-page', $id)->with('error_message', '追加できませんでした。');
+        }
+
         // 日付の取得
         $date = $request->input('date');
 
