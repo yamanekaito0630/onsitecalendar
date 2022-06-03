@@ -355,6 +355,10 @@ class AdminController extends Controller
             return redirect()->route('my-page');
         }
 
+        if($request->input('onsite-name')===null){
+            return redirect()->route('admin.my-page', $id)->with('error_message', '処理に失敗しました。');
+        }
+
         $onsite = new Onsite();
         $onsite->name = $request->input('onsite-name');
         $onsite->group_id = $id;
