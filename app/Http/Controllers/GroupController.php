@@ -274,8 +274,6 @@ class GroupController extends Controller
             return redirect()->route('my-page');
         }
 
-        dd($request);
-
         $onsite = Onsite::query()->find($request->post('onsite-id'));
 
         if (is_null($onsite)) {
