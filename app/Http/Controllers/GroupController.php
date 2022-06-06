@@ -14,6 +14,7 @@ use App\Models\GroupUser;
 use App\Models\UserOnsite;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Http\Requests\AddOnsiteRequest;
 
 class GroupController extends Controller
 {
@@ -261,7 +262,7 @@ class GroupController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function addOnsite(Request $request, int $id): RedirectResponse
+    public function addOnsite(AddOnsiteRequest $request, int $id): RedirectResponse
     {
         // 参加してないグループへのURLアクセスはリダイレクト
         $group_user = GroupUser::query()
@@ -273,7 +274,9 @@ class GroupController extends Controller
             return redirect()->route('my-page');
         }
 
-        $onsite = Onsite::query()->find($request->input('onsite-id'));
+        dd($request);
+
+        $onsite = Onsite::query()->find($request->post('onsite-id'));
 
         if (is_null($onsite)) {
             return redirect()->route('group.my-page', $id)->with('error_message', '追加できませんでした。');
