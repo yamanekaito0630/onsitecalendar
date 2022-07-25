@@ -1,0 +1,1 @@
+<?php /**PATH C:\xampp\htdocs\PracticeLaravel\onsitecalendar\resources\views/users/components/footer.blade.php ENDPATH**/ ?>
