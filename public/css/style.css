@@ -411,7 +411,6 @@ h1, h2, h3, h4, h5, h6 {
     visibility: hidden;
     opacity: 0;
   }
-
   .header .search-bar-show {
     top: 60px;
     visibility: visible;
@@ -627,7 +626,6 @@ h1, h2, h3, h4, h5, h6 {
   .toggle-sidebar #main, .toggle-sidebar #footer {
     margin-left: 0;
   }
-
   .toggle-sidebar .sidebar {
     left: -300px;
   }

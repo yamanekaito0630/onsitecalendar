@@ -153,35 +153,27 @@ body::-webkit-scrollbar {
   .title {
     font-size: 10px;
   }
-
   h2 {
     font-size: 16px;
   }
-
   .fc-toolbar-title {
     font-size: 20px !important;
   }
-
   .btn {
     font-size: 1em;
   }
-
   .employee-name {
     font-size: 15px;
   }
-
   .onsite-name {
     font-size: 10px;
   }
-
   .box {
     width: 100%;
   }
-
   label {
     font-size: 10px;
   }
-
   ul {
     font-size: 14px;
   }
