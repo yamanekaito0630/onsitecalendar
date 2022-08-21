@@ -258,7 +258,7 @@ class GroupController extends Controller
     /**
      * 現場を追加
      *
-     * @param Request $request
+     * @param AddOnsiteRequest $request
      * @param int $id
      * @return RedirectResponse
      */
@@ -302,6 +302,12 @@ class GroupController extends Controller
             $user_onsite->oneday_flag = true;
             $user_onsite->save();
         }
+
+        // 現場数の取得(追加後)
+         $count = UserOnsite::query()
+            ->where('user_id', Auth::id())
+            ->where('date', 'like', $date)
+            ->count();
 
         if ($count >= 2) {
             $user_onsite_id = UserOnsite::query()

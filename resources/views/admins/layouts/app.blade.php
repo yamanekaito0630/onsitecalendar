@@ -22,28 +22,6 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
-<style>
-    @media print {
-        .no-print {
-            display: none;
-        }
-
-        .calendar {
-            width: 1040px !important;
-        }
-
-        body {
-            zoom: 0.75;
-            width: 1060px !important;
-            margin: 0 auto;
-            -webkit-print-color-adjust: exact;
-        }
-    }
-
-    @page {
-        size: A4;
-    }
-</style>
 <body>
 @component('admins.components.header', ['group'=>$group])
 @endcomponent
